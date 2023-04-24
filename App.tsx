@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -13,6 +13,7 @@ import {
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import { Header } from './src/components/Header';
 import { Footer } from './src/components/Footer';
+import LoadingScreen from './src/screens/LoadingScreen';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -20,6 +21,15 @@ type SectionProps = PropsWithChildren<{
 
 function Section({children, title}: SectionProps): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate app initialization
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }, []);
+
   return (
     <View style={styles.sectionContainer}>
       <Text
@@ -31,6 +41,10 @@ function Section({children, title}: SectionProps): JSX.Element {
         ]}>
         {title}
       </Text>
+      {isLoading ? (
+        <LoadingScreen />
+      ) :(
+
       <Text
         style={[
           styles.sectionDescription,
@@ -40,6 +54,7 @@ function Section({children, title}: SectionProps): JSX.Element {
         ]}>
         {children}
       </Text>
+      )}
     </View>
   );
 }
