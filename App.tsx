@@ -1,10 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
 import type {PropsWithChildren} from 'react';
 import {
@@ -17,13 +10,9 @@ import {
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import { Header } from './src/components/Header';
+import { Footer } from './src/components/Footer';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -71,16 +60,14 @@ function App(): JSX.Element {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header />
+          <Header subTitle={'Home'} />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Every cent">
-              
-              seu App para controle de gastos
-            </Section>
+          <Section title="Every cent">seu App para controle de gastos</Section>
         </View>
+        <Footer />
       </ScrollView>
     </SafeAreaView>
   );
