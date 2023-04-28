@@ -64,6 +64,7 @@ function App(): JSX.Element {
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    flex: 1,
   };
 
   return (
@@ -76,11 +77,8 @@ function App(): JSX.Element {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
           <Header subTitle={'Home'} />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Every cent">seu App para controle de gastos</Section>
+        <View style={styles.sectionContainer}>
+          <Section title="Every cent">Your budgeting App</Section>
         </View>
         <Footer />
       </ScrollView>

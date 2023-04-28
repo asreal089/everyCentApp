@@ -21,6 +21,8 @@ const styles = StyleSheet.create({
     height: 60,
     justifyContent: 'center',
     alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: MyColors.foregroundsecondary,
   },
   title: {
     color: MyColors.primarydefault,
