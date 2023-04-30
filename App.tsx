@@ -21,12 +21,15 @@ function App(): JSX.Element {
             backgroundColor: MyColors.backgrounddefault,
           },
         })}
+        
         sceneContainerStyle={styles.backgroundStyle}>
         <Tab.Screen
           name="Home"
           component={HomeScreen}
           options={{
             tabBarLabel: 'Home',
+            tabBarActiveTintColor: MyColors.primarylight,
+            tabBarInactiveTintColor: MyColors.primarydefault,
             tabBarIcon: ({size}) => (
               <Icon name="home" color={MyColors.primarydefault} size={size} />
             ),
@@ -37,6 +40,8 @@ function App(): JSX.Element {
           component={ExpensesScreen}
           options={{
             tabBarLabel: 'Expenses',
+            tabBarActiveTintColor: MyColors.primarylight,
+            tabBarInactiveTintColor: MyColors.primarydefault,
             tabBarIcon: ({size}) => (
               <Icon name="money" color={MyColors.primarydefault} size={size} />
             ),
@@ -47,6 +52,8 @@ function App(): JSX.Element {
           component={BudgetScreen}
           options={{
             tabBarLabel: 'Budget',
+            tabBarActiveTintColor: MyColors.primarylight,
+            tabBarInactiveTintColor: MyColors.primarydefault,
             tabBarIcon: ({size}) => (
               <Icon name="sliders" color={MyColors.primarydefault} size={size} />
             ),
