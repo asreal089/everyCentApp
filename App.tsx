@@ -14,28 +14,41 @@ function App(): JSX.Element {
 
   return (
     <NavigationContainer>
-      <Tab.Navigator sceneContainerStyle={styles.backgroundStyle}>
+      <Tab.Navigator
+        screenOptions={({route}) => ({
+          headerShown: true,
+          tabBarStyle: {
+            backgroundColor: MyColors.backgrounddefault,
+          },
+        })}
+        sceneContainerStyle={styles.backgroundStyle}>
         <Tab.Screen
           name="Home"
           component={HomeScreen}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({size}) => (
-              <Icon name="home" color={MyColors.primarylight} size={size} />
+              <Icon name="home" color={MyColors.primarydefault} size={size} />
             ),
           }}
         />
-        <Tab.Screen name="Expenses" component={ExpensesScreen} options={{
+        <Tab.Screen
+          name="Expenses"
+          component={ExpensesScreen}
+          options={{
             tabBarLabel: 'Expenses',
-            tabBarIcon: ({ size}) => (
-              <Icon name="money" color={MyColors.primarylight} size={size} />
+            tabBarIcon: ({size}) => (
+              <Icon name="money" color={MyColors.primarydefault} size={size} />
             ),
           }}
         />
-        <Tab.Screen name="Budget" component={BudgetScreen} options={{
+        <Tab.Screen
+          name="Budget"
+          component={BudgetScreen}
+          options={{
             tabBarLabel: 'Budget',
-            tabBarIcon: ({ size}) => (
-              <Icon name="sliders" color={MyColors.primarylight} size={size} />
+            tabBarIcon: ({size}) => (
+              <Icon name="sliders" color={MyColors.primarydefault} size={size} />
             ),
           }}
         />
@@ -45,9 +58,12 @@ function App(): JSX.Element {
 }
 
 const styles = StyleSheet.create({
+  bottomTab: {
+    backgroundColor: MyColors.backgrounddefault,
+  },
   backgroundStyle: {
     flex: 1,
-    backgroundColor: MyColors.backgrounddefault,
+    backgroundColor: MyColors.backgroundlight,
   },
   sectionContainer: {
     marginTop: 32,
