@@ -1,37 +1,53 @@
-import React, {  } from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import React from 'react';
+import {StyleSheet} from 'react-native';
 
-import { Header } from './src/components/Header';
-import { Footer } from './src/components/Footer';
-
+import {NavigationContainer} from '@react-navigation/native';
+import HomeScreen from './src/screens/HomeScree';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import ExpensesScreen from './src/screens/ExpensesScreen';
+import BudgetScreen from './src/screens/BudgetScreen';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {MyColors} from './src/styles/Color';
 
 function App(): JSX.Element {
+  const Tab = createBottomTabNavigator();
 
   return (
-    <SafeAreaView style={styles.backgroundStyle}>
-      
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={styles.backgroundStyle}>
-          <Header subTitle={'Home'} />
-        <View style={styles.sectionContainer}>
-          <Text >Your budgeting App</Text>
-        </View>
-        <Footer />
-      </ScrollView>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Tab.Navigator sceneContainerStyle={styles.backgroundStyle}>
+        <Tab.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            tabBarLabel: 'Home',
+            tabBarIcon: ({size}) => (
+              <Icon name="home" color={MyColors.primarylight} size={size} />
+            ),
+          }}
+        />
+        <Tab.Screen name="Expenses" component={ExpensesScreen} options={{
+            tabBarLabel: 'Expenses',
+            tabBarIcon: ({ size}) => (
+              <Icon name="money" color={MyColors.primarylight} size={size} />
+            ),
+          }}
+        />
+        <Tab.Screen name="Budget" component={BudgetScreen} options={{
+            tabBarLabel: 'Budget',
+            tabBarIcon: ({ size}) => (
+              <Icon name="sliders" color={MyColors.primarylight} size={size} />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   backgroundStyle: {
     flex: 1,
+    backgroundColor: MyColors.backgrounddefault,
   },
   sectionContainer: {
     marginTop: 32,
