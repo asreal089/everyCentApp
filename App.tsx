@@ -13,15 +13,23 @@ function App(): JSX.Element {
   const Tab = createBottomTabNavigator();
 
   return (
-    <NavigationContainer>
+    <NavigationContainer >
       <Tab.Navigator
         screenOptions={({route}) => ({
           headerShown: true,
+          headerStyle: {
+            backgroundColor: MyColors.backgrounddefault,
+          },
+          headerBackgroundContainerStyle: {
+            backgroundColor: MyColors.backgrounddefault,
+          },
           tabBarStyle: {
             backgroundColor: MyColors.backgrounddefault,
           },
+          headerTitleStyle: {
+            color: MyColors.primarydefault,
+          }
         })}
-        
         sceneContainerStyle={styles.backgroundStyle}>
         <Tab.Screen
           name="Home"
