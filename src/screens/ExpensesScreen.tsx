@@ -1,8 +1,5 @@
 import React from 'react';
-import { View, ActivityIndicator, StyleSheet, Text, FlatList } from 'react-native';
-import { MyColors } from '../styles/Color';
-import { Header } from '../components/Header';
-import { BudgetItem } from '../components/BudgetItem';
+import { View, StyleSheet, Text } from 'react-native';
 
 const ExpensesScreen = () => {
   return (

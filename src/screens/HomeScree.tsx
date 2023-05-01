@@ -1,6 +1,5 @@
 import React from 'react';
-import {View, ActivityIndicator, StyleSheet, Text} from 'react-native';
-import {MyColors} from '../styles/Color';
+import {View, StyleSheet, Text} from 'react-native';
 import {Header} from '../components/Header';
 
 const HomeScreen = () => {
