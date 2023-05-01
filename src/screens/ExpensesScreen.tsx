@@ -1,14 +1,15 @@
 import React from 'react';
-import { View, ActivityIndicator, StyleSheet, Text } from 'react-native';
+import { View, ActivityIndicator, StyleSheet, Text, FlatList } from 'react-native';
 import { MyColors } from '../styles/Color';
 import { Header } from '../components/Header';
+import { BudgetItem } from '../components/BudgetItem';
 
 const ExpensesScreen = () => {
   return (
     <View style={styles.container}>
-      <Header subTitle={'Expenses'} />
 
-      <Text>Hello Expenses</Text>
+      <Text>Expenses:</Text>
+      
     </View>
   );
 };
@@ -18,6 +19,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  item:{
+    padding: 10,
+    fontSize: 18,
+    height: 44,
   }
 });
 

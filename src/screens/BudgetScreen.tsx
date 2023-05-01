@@ -1,14 +1,31 @@
 import React from 'react';
-import {View, ActivityIndicator, StyleSheet, Text} from 'react-native';
+import {View, ActivityIndicator, StyleSheet, Text, FlatList} from 'react-native';
 import {MyColors} from '../styles/Color';
 import {Header} from '../components/Header';
+import { BudgetItem } from '../components/BudgetItem';
 
 const BudgetScreen = () => {
   return (
     <View style={styles.container}>
-      <Header subTitle={'Budget'} />
 
-      <Text>Hello Budget</Text>
+      <FlatList
+        data={[
+          {title: 'Devin', limitAmount: 100},
+          {title: 'Devin', limitAmount: 100},
+          {title: 'Devin', limitAmount: 100},
+          {title: 'Devin', limitAmount: 100},
+          {title: 'Dan', limitAmount: 100},
+          {title: 'Dominic', limitAmount: 100},
+          {title: 'Jackson',limitAmount: 100},
+          {title: 'James', limitAmount: 100},
+          {title: 'Joel', limitAmount: 100},
+          {title: 'John', limitAmount: 100},
+          {title: 'Jillian', limitAmount: 100},
+          {title: 'Jimmy', limitAmount: 100},
+          {title: 'Julie', limitAmount: 100},
+        ]}
+        renderItem={({item}) => <BudgetItem title={item.title} limitAmount={item.limitAmount}/>}
+      />
     </View>
   );
 };
