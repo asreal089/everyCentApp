@@ -51,7 +51,7 @@ const BudgetScreen = () => {
       <DataTable>
         <DataTable.Header>
           <DataTable.Title>Type</DataTable.Title>
-          <DataTable.Title numeric>Limit</DataTable.Title>
+          <DataTable.Title>Limit</DataTable.Title>
           <DataTable.Title>Action</DataTable.Title>
         </DataTable.Header>
         {data.map((item, index) => (

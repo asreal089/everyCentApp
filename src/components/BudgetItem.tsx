@@ -16,7 +16,7 @@ const BudgetItem: React.FC<BudgetItemProps> = ({title, limitAmount}) => {
   return (
     <DataTable.Row>
       <DataTable.Cell>{title}</DataTable.Cell>
-      <DataTable.Cell numeric>{value}</DataTable.Cell>
+      <DataTable.Cell>{value}</DataTable.Cell>
       <DataTable.Cell>
         <Icon
           name="square-edit-outline"
