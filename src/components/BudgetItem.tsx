@@ -17,7 +17,7 @@ const BudgetItem: React.FC<BudgetItemProps> = ({title, limitAmount}) => {
     <DataTable.Row>
       <DataTable.Cell>{title}</DataTable.Cell>
       <DataTable.Cell>{value}</DataTable.Cell>
-      <DataTable.Cell>
+      <DataTable.Cell numeric>
         <Icon
           name="square-edit-outline"
           color={MyColors.backgrounddefault}
