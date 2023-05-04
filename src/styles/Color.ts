@@ -22,3 +22,16 @@ export const MyColors = {
     errorlight: '#ffcecc',
   
 }
+
+export const ChartColors =  [
+    "#4B0082", // Indigo
+    "#6A5ACD", // SlateBlue
+    "#9370DB", // MediumPurple
+    "#BA55D3", // MediumOrchid
+    "#DA70D6", // Orchid
+    "#D8BFD8", // Thistle
+    "#8A2BE2", // BlueViolet
+    "#9400D3", // DarkViolet
+    "#9932CC", // DarkOrchid
+    "#A020F0", // Purple
+  ];
