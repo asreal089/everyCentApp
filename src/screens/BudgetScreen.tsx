@@ -12,6 +12,7 @@ import {DataTable} from 'react-native-paper';
 import {PieChart} from 'react-native-chart-kit';
 import {ChartColors, MyColors} from '../styles/Color';
 import formatMoney from '../utils/NumberUtils';
+import AddBudgetButton from '../components/AddBudgetButton';
 
 const BudgetScreen = () => {
   const dataIncome = [
@@ -97,7 +98,7 @@ const BudgetScreen = () => {
   const totalBudget = dataBudget.reduce((accumulator, object) => {
     return accumulator + object.limitAmount;
   }, 0);
-  const displayTotalBudget= formatMoney(totalBudget);
+  const displayTotalBudget = formatMoney(totalBudget);
 
   return (
     <SafeAreaView>
@@ -116,6 +117,7 @@ const BudgetScreen = () => {
               hasLegend={true}
             />
           </View>
+          <AddBudgetButton onPress={undefined}/>
           <DataTable>
             <DataTable.Header>
               <DataTable.Title>Total income</DataTable.Title>
@@ -144,7 +146,6 @@ const BudgetScreen = () => {
             ))}
           </DataTable>
           <View style={styles.titleContainer}>
-
             <Text style={styles.title}>Budget:</Text>
           </View>
           <DataTable>
