@@ -11,6 +11,7 @@ import {BudgetItem} from '../components/BudgetItem';
 import {DataTable} from 'react-native-paper';
 import {PieChart} from 'react-native-chart-kit';
 import {ChartColors, MyColors} from '../styles/Color';
+import formatMoney from '../utils/NumberUtils';
 
 const BudgetScreen = () => {
   const dataIncome = [
@@ -87,6 +88,17 @@ const BudgetScreen = () => {
       stroke: '#ffa726',
     },
   };
+
+  const totalIncome = dataIncome.reduce((accumulator, object) => {
+    return accumulator + object.value;
+  }, 0);
+  const displayTotalIncome = formatMoney(totalIncome);
+
+  const totalBudget = dataBudget.reduce((accumulator, object) => {
+    return accumulator + object.limitAmount;
+  }, 0);
+  const displayTotalBudget= formatMoney(totalBudget);
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -104,7 +116,19 @@ const BudgetScreen = () => {
               hasLegend={true}
             />
           </View>
-          <Text>Income:</Text>
+          <DataTable>
+            <DataTable.Header>
+              <DataTable.Title>Total income</DataTable.Title>
+              <DataTable.Title numeric>Total budget</DataTable.Title>
+            </DataTable.Header>
+            <DataTable.Row>
+              <DataTable.Cell>{displayTotalIncome}</DataTable.Cell>
+              <DataTable.Cell numeric>{displayTotalBudget}</DataTable.Cell>
+            </DataTable.Row>
+          </DataTable>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>Income:</Text>
+          </View>
           <DataTable>
             <DataTable.Header>
               <DataTable.Title>Type</DataTable.Title>
@@ -119,7 +143,10 @@ const BudgetScreen = () => {
               />
             ))}
           </DataTable>
-          <Text>Budget:</Text>
+          <View style={styles.titleContainer}>
+
+            <Text style={styles.title}>Budget:</Text>
+          </View>
           <DataTable>
             <DataTable.Header>
               <DataTable.Title>Type</DataTable.Title>
@@ -146,6 +173,17 @@ const styles = StyleSheet.create({
   },
   chartContainer: {
     flex: 1,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginTop: 10,
+    marginBottom: 10,
+    jus: 'center',
+  },
+  titleContainer: {
+    flex: 1,
+    alignItems: 'center',
   },
 });
 

@@ -8,7 +8,7 @@ Mobile version of EveryCent for webApp.
 
 ## ScreenShoot:
 
-<img align="center" src="https://raw.githubusercontent.com/asreal089/everyCentApp/main/app_preview.png">
+<img align="center" width="250px" height="440px" src="https://raw.githubusercontent.com/asreal089/everyCentApp/main/app_preview.png">
 
 # How to run
 
