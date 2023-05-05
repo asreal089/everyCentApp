@@ -4,9 +4,9 @@ import {
   TouchableOpacity,
   Text,
   GestureResponderEvent,
+  View
 } from 'react-native';
 import {MyColors} from '../styles/Color';
-import {View} from 'react-native';
 
 function AddBudgetButton(props: {
   onPress: ((event: GestureResponderEvent) => void) | undefined;

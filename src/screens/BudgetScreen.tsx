@@ -180,7 +180,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginTop: 10,
     marginBottom: 10,
-    jus: 'center',
   },
   titleContainer: {
     flex: 1,
