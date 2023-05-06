@@ -13,8 +13,19 @@ import {PieChart} from 'react-native-chart-kit';
 import {ChartColors, MyColors} from '../styles/Color';
 import formatMoney from '../utils/NumberUtils';
 import AddBudgetButton from '../components/AddBudgetButton';
+import { StackNavigationProp } from '@react-navigation/stack/lib/typescript/src/types';
 
-const BudgetScreen = () => {
+type RootStackParamList = {
+  BudgetViewScreen: undefined;
+  AddEditBudgetScreen: undefined;
+};
+
+type BudgetViewScreenProps = {
+  navigation: StackNavigationProp<RootStackParamList, 'AddEditBudgetScreen'>;
+};
+
+
+const BudgeViewScreen = ({ navigation }: BudgetViewScreenProps) => {
   const dataIncome = [
     {title: 'Salary', value: 5000},
     {title: 'Investments', value: 2000},
@@ -117,7 +128,7 @@ const BudgetScreen = () => {
               hasLegend={true}
             />
           </View>
-          <AddBudgetButton onPress={undefined}/>
+          <AddBudgetButton onPress={() => navigation.navigate("AddEditBudgetScreen")}/>
           <DataTable>
             <DataTable.Header>
               <DataTable.Title>Total income</DataTable.Title>
@@ -187,4 +198,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BudgetScreen;
+export default BudgeViewScreen;

@@ -5,9 +5,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import HomeScreen from './src/screens/HomeScree';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import ExpensesScreen from './src/screens/ExpensesScreen';
-import BudgetScreen from './src/screens/BudgetScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {MyColors} from './src/styles/Color';
+import BudgetNaviagtionScreen from './src/screens/BudgetNavigationScreen';
 
 function App(): JSX.Element {
   const Tab = createBottomTabNavigator();
@@ -57,7 +57,7 @@ function App(): JSX.Element {
         />
         <Tab.Screen
           name="Budget"
-          component={BudgetScreen}
+          component={BudgetNaviagtionScreen}
           options={{
             tabBarLabel: 'Budget',
             tabBarActiveTintColor: MyColors.primarylight,
