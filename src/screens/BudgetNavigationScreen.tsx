@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 
 const BudgetNaviagtionScreen = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Budget View" component={BudgeViewScreen} />
+    <Stack.Screen name="BudgeViewScreen" component={BudgeViewScreen} />
     <Stack.Screen name="AddEditBudgetScreen" component={AddEditBudgetScreen} />
   </Stack.Navigator>
 );
