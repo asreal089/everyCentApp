@@ -1,6 +1,14 @@
 import React, {useState} from 'react';
-import {View, Text, TextInput, StyleSheet, Button} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Button,
+  TouchableOpacity,
+} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
+import {MyColors} from '../styles/Color';
 
 const AddEditBudgetScreen = () => {
   const [title, setTitle] = useState('');
@@ -34,28 +42,29 @@ const AddEditBudgetScreen = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Budget Item:</Text>
-        <Picker
-          selectedValue={title}
-          onValueChange={handleTitleChange}
-          style={styles.input}>
-            {budgetTipe.map((item, index) => {
-              return <Picker.Item label={item} value={item} key={item} />;
-            })}
-        </Picker>
-        <Text style={styles.label}>Limit:</Text>
-        <TextInput
-          style={styles.inputNumber}
-          keyboardType="numeric"
-          onChangeText={text => {
-            return handleLimitChange(text.replace(/[^0-9]/g, ''));
-          }}
-          value={limit.toString()}
-          maxLength={10}
-        />
+      <Text style={styles.label}>Limit:</Text>
+      <TextInput
+        style={styles.inputNumber}
+        keyboardType="numeric"
+        onChangeText={text => {
+          return handleLimitChange(text.replace(/[^0-9]/g, ''));
+        }}
+        value={limit.toString()}
+        maxLength={10}
+      />
+      <Picker
+        selectedValue={title}
+        onValueChange={handleTitleChange}
+        style={styles.inputPicker}>
+        {budgetTipe.map((item, index) => {
+          return <Picker.Item label={item} value={item} key={item} />;
+        })}
+      </Picker>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+          <Text style={styles.text}>Save</Text>
+        </TouchableOpacity>
       </View>
-      <Button title="Submit" onPress={handleSubmit} />
     </View>
   );
 };
@@ -68,17 +77,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   inputContainer: {
-    flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 5,
   },
   label: {
     marginRight: 10,
     fontSize: 16,
+    justifyContent: 'center',
   },
-  input: {
+  inputPicker: {
     flex: 1,
     padding: 10,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    height: 10,
   },
   inputNumber: {
     flex: 1,
@@ -86,7 +99,23 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
-  }
+  },
+  button: {
+    backgroundColor: MyColors.backgrounddefault,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  text: {
+    color: MyColors.primarydefault,
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  buttonContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 export default AddEditBudgetScreen;
