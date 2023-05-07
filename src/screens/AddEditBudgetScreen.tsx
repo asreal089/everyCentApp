@@ -42,16 +42,18 @@ const AddEditBudgetScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Limit:</Text>
-      <TextInput
-        style={styles.inputNumber}
-        keyboardType="numeric"
-        onChangeText={text => {
-          return handleLimitChange(text.replace(/[^0-9]/g, ''));
-        }}
-        value={limit.toString()}
-        maxLength={10}
-      />
+      <View style={styles.inputTextContainer}>
+        <Text style={styles.inputLabel}>Value</Text>
+        <TextInput
+          style={styles.inputNumber}
+          keyboardType="numeric"
+          onChangeText={text => {
+            return handleLimitChange(text.replace(/[^0-9]/g, ''));
+          }}
+          value={limit.toString()}
+          maxLength={10}
+        />
+      </View>
       <Picker
         selectedValue={title}
         onValueChange={handleTitleChange}
@@ -62,7 +64,7 @@ const AddEditBudgetScreen = () => {
       </Picker>
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-          <Text style={styles.text}>Save</Text>
+          <Text style={styles.textButton}>Save</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -76,27 +78,30 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
   },
-  inputContainer: {
-    alignItems: 'center',
-    marginVertical: 5,
-  },
-  label: {
-    marginRight: 10,
-    fontSize: 16,
+  inputTextContainer: {
+    flexDirection: 'column',
     justifyContent: 'center',
+    alignContent: 'center',
+    justifyItems: 'center',
+    height: 70,
+    paddingEnd: 15,
+    paddingStart: 15,
+  },
+  inputLabel: {
+    justifyContent: 'center',
+    alignContent: 'center',
+    paddingBottom : 10,
   },
   inputPicker: {
     flex: 1,
     padding: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
+    width: '100%',
     height: 10,
   },
   inputNumber: {
-    flex: 1,
     padding: 10,
     borderWidth: 1,
+    maxHeight: 50,
     borderColor: '#ccc',
     borderRadius: 5,
   },
@@ -106,7 +111,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 5,
   },
-  text: {
+  textButton: {
     color: MyColors.primarydefault,
     fontSize: 20,
     fontWeight: 'bold',
