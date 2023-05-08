@@ -153,7 +153,7 @@ const BudgeViewScreen = ({ navigation }: BudgetViewScreenProps) => {
                 key={item.title}
                 title={item.title}
                 limitAmount={item.value}
-              />
+                navigation={navigation}              />
             ))}
           </DataTable>
           <View style={styles.titleContainer}>
@@ -170,6 +170,7 @@ const BudgeViewScreen = ({ navigation }: BudgetViewScreenProps) => {
                 key={item.title}
                 title={item.title}
                 limitAmount={item.limitAmount}
+                navigation={navigation}
               />
             ))}
           </DataTable>
