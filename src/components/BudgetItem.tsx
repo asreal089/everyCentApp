@@ -4,7 +4,7 @@ import {MyColors} from '../styles/Color';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import formatMoney from '../utils/NumberUtils';
 import {DataTable} from 'react-native-paper';
-import { StackNavigationProp } from '@react-navigation/stack';
+import {StackNavigationProp} from '@react-navigation/stack';
 
 type RootStackParamList = {
   BudgetViewScreen: undefined;
@@ -14,10 +14,14 @@ type RootStackParamList = {
 interface BudgetItemProps {
   title: string;
   limitAmount: number;
-  navigation : StackNavigationProp<RootStackParamList, 'AddEditBudgetScreen'>;
+  navigation: StackNavigationProp<RootStackParamList, 'AddEditBudgetScreen'>;
 }
 
-const BudgetItem: React.FC<BudgetItemProps> = ({title, limitAmount, navigation }) => {
+const BudgetItem: React.FC<BudgetItemProps> = ({
+  title,
+  limitAmount,
+  navigation,
+}) => {
   const value = formatMoney(limitAmount);
 
   return (
@@ -25,14 +29,17 @@ const BudgetItem: React.FC<BudgetItemProps> = ({title, limitAmount, navigation }
       <DataTable.Cell>{title}</DataTable.Cell>
       <DataTable.Cell>{value}</DataTable.Cell>
       <DataTable.Cell numeric>
-        <TouchableOpacity onPress={() => navigation.navigate("AddEditBudgetScreen")} >
-        <Icon
-          name="square-edit-outline"
-          color={MyColors.backgrounddefault}
-          size={25}
-        />
+        <TouchableOpacity
+          onPress={() => navigation.navigate('AddEditBudgetScreen')}>
+          <Icon
+            name="square-edit-outline"
+            color={MyColors.backgrounddefault}
+            size={25}
+          />
         </TouchableOpacity>
-        <Icon name="delete" color={MyColors.backgrounddefault} size={25} />
+        <TouchableOpacity onPress={()=> console.log("deleting budegt")}>
+          <Icon name="delete" color={MyColors.backgrounddefault} size={25} />
+        </TouchableOpacity>
       </DataTable.Cell>
     </DataTable.Row>
   );
