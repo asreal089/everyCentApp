@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {DataTable} from 'react-native-paper';
 import formatMoney from '../utils/NumberUtils';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { MyColors } from '../styles/Color';
 
 interface Transaction {
   id: number;
@@ -83,6 +85,7 @@ const ExpensesScreen = () => {
           <DataTable.Title >Amount</DataTable.Title>
           <DataTable.Title >Date</DataTable.Title>
           <DataTable.Title>Category</DataTable.Title>
+          <DataTable.Title numeric>Actions</DataTable.Title>
         </DataTable.Header>
         {incomes.map((income, index) => (
           <DataTable.Row key={index}>
@@ -90,6 +93,19 @@ const ExpensesScreen = () => {
             <DataTable.Cell>{formatMoney(income.amount)}</DataTable.Cell>
             <DataTable.Cell >{income.date.getDay()+1+"-" + income.date.getMonth()+"-"+income.date.getFullYear()}</DataTable.Cell>
             <DataTable.Cell>{income.category}</DataTable.Cell>
+            <DataTable.Cell numeric>
+            <TouchableOpacity
+              onPress={() => console.log("edit button")}>
+              <Icon
+                name="square-edit-outline"
+                color={MyColors.backgrounddefault}
+                size={25}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=> console.log("deleting budegt")}>
+              <Icon name="delete" color={MyColors.backgrounddefault} size={25} />
+            </TouchableOpacity>
+          </DataTable.Cell>
           </DataTable.Row>
         ))}
       </DataTable>
@@ -100,6 +116,7 @@ const ExpensesScreen = () => {
           <DataTable.Title >Amount</DataTable.Title>
           <DataTable.Title >Date</DataTable.Title>
           <DataTable.Title>Category</DataTable.Title>
+          <DataTable.Title numeric>Actions</DataTable.Title>
         </DataTable.Header>
         {expenses.map((expenses, index) => (
           <DataTable.Row key={index}>
@@ -107,6 +124,17 @@ const ExpensesScreen = () => {
             <DataTable.Cell>{formatMoney(expenses.amount)}</DataTable.Cell>
             <DataTable.Cell >{expenses.date.getDay()+1+"-" + expenses.date.getMonth()+"-"+expenses.date.getFullYear()}</DataTable.Cell>
             <DataTable.Cell>{expenses.category}</DataTable.Cell>
+            <TouchableOpacity
+              onPress={() => console.log("edit button")}>
+              <Icon
+                name="square-edit-outline"
+                color={MyColors.backgrounddefault}
+                size={25}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=> console.log("deleting budegt")}>
+              <Icon name="delete" color={MyColors.backgrounddefault} size={25} />
+            </TouchableOpacity>
           </DataTable.Row>
         ))}
       </DataTable>
