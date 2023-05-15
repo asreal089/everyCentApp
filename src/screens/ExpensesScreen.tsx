@@ -131,15 +131,14 @@ const ExpensesScreen = () => {
           <DataTable>
             <DataTable.Header>
               <DataTable.Title>Name</DataTable.Title>
-              <DataTable.Title>Amount</DataTable.Title>
               <DataTable.Title>Date</DataTable.Title>
               <DataTable.Title>Category</DataTable.Title>
+              <DataTable.Title numeric>Amount</DataTable.Title>
               <DataTable.Title numeric>Actions</DataTable.Title>
             </DataTable.Header>
             {incomes.map((income, index) => (
               <DataTable.Row key={index}>
                 <DataTable.Cell>{income.name}</DataTable.Cell>
-                <DataTable.Cell>{formatMoney(income.amount)}</DataTable.Cell>
                 <DataTable.Cell>
                   {income.date.getDay() +
                     1 +
@@ -149,6 +148,7 @@ const ExpensesScreen = () => {
                     income.date.getFullYear()}
                 </DataTable.Cell>
                 <DataTable.Cell>{income.category}</DataTable.Cell>
+                <DataTable.Cell numeric>{formatMoney(income.amount)}</DataTable.Cell>
                 <DataTable.Cell numeric>
                   <TouchableOpacity onPress={() => console.log('edit button')}>
                     <Icon
@@ -173,15 +173,14 @@ const ExpensesScreen = () => {
           <DataTable>
             <DataTable.Header>
               <DataTable.Title>Name</DataTable.Title>
-              <DataTable.Title>Amount</DataTable.Title>
               <DataTable.Title>Date</DataTable.Title>
               <DataTable.Title>Category</DataTable.Title>
+              <DataTable.Title numeric>Amount</DataTable.Title>
               <DataTable.Title numeric>Actions</DataTable.Title>
             </DataTable.Header>
             {expenses.map((expenses, index) => (
               <DataTable.Row key={index}>
                 <DataTable.Cell>{expenses.name}</DataTable.Cell>
-                <DataTable.Cell>{formatMoney(expenses.amount)}</DataTable.Cell>
                 <DataTable.Cell>
                   {expenses.date.getDay() +
                     1 +
@@ -191,21 +190,24 @@ const ExpensesScreen = () => {
                     expenses.date.getFullYear()}
                 </DataTable.Cell>
                 <DataTable.Cell>{expenses.category}</DataTable.Cell>
-                <TouchableOpacity onPress={() => console.log('edit button')}>
-                  <Icon
-                    name="square-edit-outline"
-                    color={MyColors.backgrounddefault}
-                    size={25}
-                  />
-                </TouchableOpacity>
-                <TouchableOpacity
-                  onPress={() => console.log('deleting budegt')}>
-                  <Icon
-                    name="delete"
-                    color={MyColors.backgrounddefault}
-                    size={25}
-                  />
-                </TouchableOpacity>
+                <DataTable.Cell>{formatMoney(expenses.amount)}</DataTable.Cell>
+                <DataTable.Cell numeric>
+                  <TouchableOpacity onPress={() => console.log('edit button')}>
+                    <Icon
+                      name="square-edit-outline"
+                      color={MyColors.backgrounddefault}
+                      size={25}
+                    />
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => console.log('deleting budegt')}>
+                    <Icon
+                      name="delete"
+                      color={MyColors.backgrounddefault}
+                      size={25}
+                    />
+                  </TouchableOpacity>
+                </DataTable.Cell>
               </DataTable.Row>
             ))}
           </DataTable>
