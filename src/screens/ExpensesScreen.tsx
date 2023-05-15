@@ -190,7 +190,7 @@ const ExpensesScreen = () => {
                     expenses.date.getFullYear()}
                 </DataTable.Cell>
                 <DataTable.Cell>{expenses.category}</DataTable.Cell>
-                <DataTable.Cell>{formatMoney(expenses.amount)}</DataTable.Cell>
+                <DataTable.Cell numeric>{formatMoney(expenses.amount)}</DataTable.Cell>
                 <DataTable.Cell numeric>
                   <TouchableOpacity onPress={() => console.log('edit button')}>
                     <Icon
