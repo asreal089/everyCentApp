@@ -11,6 +11,7 @@ import formatMoney from '../utils/NumberUtils';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {MyColors} from '../styles/Color';
 import {ScrollView} from 'react-native-gesture-handler';
+import formatDate from '../utils/DateUtils';
 
 interface Transaction {
   id: number;
@@ -140,12 +141,7 @@ const ExpensesScreen = () => {
               <DataTable.Row key={index}>
                 <DataTable.Cell>{income.name}</DataTable.Cell>
                 <DataTable.Cell>
-                  {income.date.getDay() +
-                    1 +
-                    '-' +
-                    income.date.getMonth() +
-                    '-' +
-                    income.date.getFullYear()}
+                  {formatDate( income.date)}
                 </DataTable.Cell>
                 <DataTable.Cell>{income.category}</DataTable.Cell>
                 <DataTable.Cell numeric>{formatMoney(income.amount)}</DataTable.Cell>
@@ -182,12 +178,7 @@ const ExpensesScreen = () => {
               <DataTable.Row key={index}>
                 <DataTable.Cell>{expenses.name}</DataTable.Cell>
                 <DataTable.Cell>
-                  {expenses.date.getDay() +
-                    1 +
-                    '-' +
-                    expenses.date.getMonth() +
-                    '-' +
-                    expenses.date.getFullYear()}
+                  {formatDate( expenses.date)}
                 </DataTable.Cell>
                 <DataTable.Cell>{expenses.category}</DataTable.Cell>
                 <DataTable.Cell numeric>{formatMoney(expenses.amount)}</DataTable.Cell>
