@@ -5,13 +5,16 @@ import {
   Text,
   TouchableOpacity,
   SafeAreaView,
+  Dimensions,
 } from 'react-native';
 import {DataTable} from 'react-native-paper';
 import formatMoney from '../utils/NumberUtils';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {MyColors} from '../styles/Color';
+import {ChartColors, MyColors} from '../styles/Color';
 import {ScrollView} from 'react-native-gesture-handler';
 import formatDate from '../utils/DateUtils';
+import { PieChart } from 'react-native-chart-kit';
+import AddTransactionButton from '../components/AddTransactionButton';
 
 interface Transaction {
   id: number;
@@ -114,10 +117,51 @@ const ExpensesScreen = () => {
     incomes.reduce((acc, cur) => acc + cur.amount, 0),
   );
 
+  const chartData: any[] = [];
+  expenses.forEach((item, index) => {
+    chartData.push({
+      name: item.category,
+      population: item.amount,
+      color: ChartColors[index],
+      legendFontColor: MyColors.primarydark,
+      legendFontSize: 15,
+    });
+  });
+  const chartConfig = {
+    backgroundColor: '#e26a00',
+    backgroundGradientFrom: '#fb8c00',
+    backgroundGradientTo: '#ffa726',
+    decimalPlaces: 2, // optional, defaults to 2dp
+    color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+    labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+    style: {
+      borderRadius: 16,
+    },
+    propsForDots: {
+      r: '6',
+      strokeWidth: '2',
+      stroke: '#ffa726',
+    },
+  };
+
   return (
     <SafeAreaView>
       <ScrollView>
         <View style={styles.container}>
+        <View style={styles.chartContainer}>
+            <PieChart
+              data={chartData}
+              width={Dimensions.get('window').width}
+              height={220}
+              chartConfig={chartConfig}
+              accessor={'population'}
+              backgroundColor={'transparent'}
+              paddingLeft={'10'}
+              center={[0, 0]}
+              hasLegend={true}
+            />
+          </View>
+          <AddTransactionButton onPress={() => console.log("add transaction clicked")} />
           <DataTable>
             <DataTable.Header>
               <DataTable.Title>Total income</DataTable.Title>
@@ -209,6 +253,10 @@ const ExpensesScreen = () => {
 };
 
 const styles = StyleSheet.create({
+
+  chartContainer: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
