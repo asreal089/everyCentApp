@@ -9,12 +9,13 @@ import {
 import {MyColors} from '../styles/Color';
 
 function AddBudgetButton(props: {
+  title: string;
   onPress: ((event: GestureResponderEvent) => void) | undefined;
 }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={props.onPress}>
-        <Text style={styles.text}>Add Budget Item</Text>
+        <Text style={styles.text}>{props.title}</Text>
       </TouchableOpacity>
     </View>
   );

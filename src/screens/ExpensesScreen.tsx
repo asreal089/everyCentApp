@@ -14,7 +14,7 @@ import {ChartColors, MyColors} from '../styles/Color';
 import {ScrollView} from 'react-native-gesture-handler';
 import formatDate from '../utils/DateUtils';
 import { PieChart } from 'react-native-chart-kit';
-import AddTransactionButton from '../components/AddTransactionButton';
+import MainButton from '../components/MainButton';
 
 interface Transaction {
   id: number;
@@ -161,7 +161,7 @@ const ExpensesScreen = () => {
               hasLegend={true}
             />
           </View>
-          <AddTransactionButton onPress={() => console.log("add transaction clicked")} />
+          <MainButton title="Add Transaction" onPress={() => console.log("add transaction clicked")} />
           <DataTable>
             <DataTable.Header>
               <DataTable.Title>Total income</DataTable.Title>

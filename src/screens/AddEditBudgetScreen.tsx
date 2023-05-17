@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import {MyColors} from '../styles/Color';
+import MainButton from '../components/MainButton';
 
 const AddEditBudgetScreen = () => {
   const [title, setTitle] = useState('');
@@ -23,7 +24,7 @@ const AddEditBudgetScreen = () => {
   };
 
   const handleSubmit = () => {
-    // Handle form submission here
+    console.log('Title: ' + title);
   };
 
   const budgetTipe = [
@@ -62,9 +63,7 @@ const AddEditBudgetScreen = () => {
         })}
       </Picker>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-          <Text style={styles.textButton}>Save</Text>
-        </TouchableOpacity>
+        <MainButton title="save" onPress={handleSubmit} />
       </View>
     </View>
   );
