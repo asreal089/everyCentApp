@@ -24,59 +24,25 @@ const expenses = [
     expense: 80.0,
     budget: 100.0,
   },
-  {
-    category: 'Healthcare',
-    expense: 120.0,
-    budget: 150.0,
-  },
-  {
-    category: 'Education',
-    expense: 200.0,
-    budget: 250.0,
-  },
-  {
-    category: 'Shopping',
-    expense: 100.0,
-    budget: 200.0,
-  },
-  {
-    category: 'Travel',
-    expense: 250.0,
-    budget: 300.0,
-  },
-  {
-    category: 'Gym',
-    expense: 50.0,
-    budget: 80.0,
-  },
-  {
-    category: 'Miscellaneous',
-    expense: 70.0,
-    budget: 100.0,
-  },
 ];
 
 const chartData: {labels: any, data:any, colors:any} = { labels: [], data: [], colors: [] };
 expenses.forEach((item, index) => {
   chartData.labels.push(item.category);
   chartData.data.push(item.expense / item.budget);
-  chartData.colors.push(ChartColors[index]);
 });
 const chartConfig = {
-  backgroundColor: '#e26a00',
+  backgroundColor: MyColors.backgroundlight,
   backgroundGradientFrom: ChartColors[0],
   backgroundGradientTo: ChartColors[ChartColors.length - 1],
   decimalPlaces: 2,
   color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
   labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
   style: {
-    borderRadius: 16,
+    borderRadius: 1,
   },
-  propsForDots: {
-    r: '6',
-    strokeWidth: '2',
-    stroke: '#ffa726',
-  },
+  strokeWidth: 4,
+  
 };
 
 const HomeScreen = () => {
